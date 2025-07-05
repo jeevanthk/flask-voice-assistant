@@ -1,4 +1,5 @@
-Flask Voice Assistant
+#flask-voice-assistant
+Simple voice assistant using Flask and Python
 
 This is a simple voice assistant built using Python and Flask. It listens to your voice through the microphone, converts it to text, detects what you’re trying to say (intent), and gives a voice + text response.
 
@@ -26,3 +27,4 @@ Author
 Created by Jeevanth K
 Intern – AI Voice Assistant Program
 GitHub: https://github.com/jeevanthk
+
