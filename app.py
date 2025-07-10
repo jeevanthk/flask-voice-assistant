@@ -3,9 +3,9 @@ import speech_recognition as sr
 import pyttsx3
 from datetime import datetime
 import threading
+import time
 app = Flask(__name__)
 recognizer = sr.Recognizer()
-engine = pyttsx3.init()
 def detect_intent(text):
     text = text.lower()
     if any(word in text for word in ["hello", "hi", "hey"]):
@@ -17,9 +17,17 @@ def detect_intent(text):
         return "exit", "Goodbye! Have a nice day."
     else:
         return "unknown", "Sorry, I didn't understand that."
-def speak(message):
-    engine.say(message)
-    engine.runAndWait()
+def speak(text):
+    try:
+        print("Speaking:", text)
+        engine = pyttsx3.init()
+        engine.setProperty('rate', 150)
+        engine.setProperty('volume', 1.0)
+        engine.say(text)
+        engine.runAndWait()
+        time.sleep(1)
+    except Exception as e:
+        print("Speech error:", e)
 @app.route("/voice", methods=["GET"])
 def handle_voice():
     try:
